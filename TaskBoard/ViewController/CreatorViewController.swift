@@ -39,6 +39,7 @@ class CreatorViewController: UIViewController {
         super.viewDidLoad()
         taskDescriptionTextView.layer.borderWidth = 1.0
         titleTextField.layer.borderWidth = 1.0
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,7 +88,7 @@ class CreatorViewController: UIViewController {
     @IBAction func buttonDone(_ sender: Any) {
         
         if titleTextField.text == "" {
-            let alert = UIAlertController(title: "Error", message: "You must at least have a task name!.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "You must at least have a task name!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Return", style: .default, handler: { action in
             }))
             self.present(alert, animated: true, completion: nil)
@@ -134,4 +135,17 @@ class CreatorViewController: UIViewController {
         
     }
     
+}
+
+extension UIViewController {
+
+    @objc func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:    #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

@@ -36,7 +36,6 @@ class TaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
      // Whenever we change the segmented control, we will also tell the delegate to change its view to the
@@ -59,6 +58,7 @@ class TaskViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
         taskSegmentedControl.selectedSegmentIndex = 0
+        
     }
     
         
